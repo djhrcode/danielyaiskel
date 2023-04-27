@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 type LocalStorageHook<T> = {
   value: T | null
-  setValue: (value: T) => void
+  setValue: (value: T | null) => void
   hasValue: () => boolean
 }
 
@@ -28,9 +28,7 @@ export const useLocalStorage = <T>(
 
   return {
     value: state.value,
-    setValue: (value: T) => {
-      setState({ value })
-    },
+    setValue: (value) => setState({ value }),
     hasValue: () => state.value !== null,
   }
 }

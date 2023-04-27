@@ -4,3 +4,8 @@
   font-family: 'Fraunces';
   src: url(/fraunces.woff2) format('woff2');
 }
+
+.map-container {
+  height: 100%;
+  width: 100%;
+}

@@ -39,6 +39,7 @@ import dayjs from 'dayjs'
 import { useEffect, useRef, useState } from 'react'
 import { AlertDialogOverlay } from '@chakra-ui/react'
 import { useLocalStorage } from '@/shared/hooks/useLocalStorage'
+import { Invitation } from '@/shared/domain/invitation'
 
 const Heart = styled(HeartIcon)({
   fontSize: '0.5em',
@@ -87,7 +88,7 @@ export default function Home() {
     setValue: setInvitationStorage,
     value: invitationValue,
     hasValue: hasInvitationStorage,
-  } = useLocalStorage<string>('invitation-data')
+  } = useLocalStorage<Invitation>('invitation-data')
 
   const {
     setValue: setKeyStorage,

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
   Box,
   Button,
@@ -20,13 +21,20 @@ import {
 import { ArrowForwardIcon, HamburgerIcon } from '@chakra-ui/icons'
 import styled from '@emotion/styled'
 import { Drawer } from '@chakra-ui/react'
-import { ArrowRightIcon, HeartIcon } from '@/shared/ui/icons'
+import {
+  ArrowRightIcon,
+  HeartIcon,
+  PinIcon,
+  QuestionCircleIcon,
+} from '@/shared/ui/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Invitation } from '@/shared/domain/invitation'
 import { useLocalStorage } from '@/shared/hooks/useLocalStorage'
+import { GuestGenre } from '@/shared/domain/guest_genre'
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
 
 const Heart = styled(HeartIcon)({
   fontSize: '0.5em',
@@ -128,6 +136,21 @@ export default function Home() {
   const { query } = useRouter()
   const { key } = query
 
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY || '',
+  })
+
+  //10.4767208,-66.1750094,13.97z
+  const center = useMemo(() => ({ lat: 10.4736232, lng: -66.1575654 }), [])
+  const customMarker = {
+    path: 'M29.395,0H17.636c-3.117,0-5.643,3.467-5.643,6.584v34.804c0,3.116,2.526,5.644,5.643,5.644h11.759   c3.116,0,5.644-2.527,5.644-5.644V6.584C35.037,3.467,32.511,0,29.395,0z M34.05,14.188v11.665l-2.729,0.351v-4.806L34.05,14.188z    M32.618,10.773c-1.016,3.9-2.219,8.51-2.219,8.51H16.631l-2.222-8.51C14.41,10.773,23.293,7.755,32.618,10.773z M15.741,21.713   v4.492l-2.73-0.349V14.502L15.741,21.713z M13.011,37.938V27.579l2.73,0.343v8.196L13.011,37.938z M14.568,40.882l2.218-3.336   h13.771l2.219,3.336H14.568z M31.321,35.805v-7.872l2.729-0.355v10.048L31.321,35.805',
+    fillColor: 'red',
+    fillOpacity: 2,
+    strokeWeight: 1,
+    rotation: 0,
+    scale: 1,
+  }
+
   const {
     setValue: setKeyStorage,
     value: keyValue,
@@ -140,17 +163,37 @@ export default function Home() {
     hasValue: hasTokenStorage,
   } = useLocalStorage<string>('invitation-token')
 
+  const {
+    value: invitationValue,
+    setValue: setInvitationStorage,
+    hasValue: hasInvitationStorage,
+  } = useLocalStorage<Invitation>('invitation-data')
+
   const { execute, data: response } = useFetch<{ data: Invitation }>(
-    `http://localhost:3000/api/invitations/${key}`
+    `/api/invitations/${keyValue}`
   )
 
   useEffect(() => {
-    if (key) execute()
-  }, [key, execute])
+    if (key && keyValue && key !== keyValue) {
+      setKeyStorage(null)
+      setTokenStorage(null)
+      setInvitationStorage(null)
+      return
+    }
+
+    if (key) setKeyStorage(key as string)
+  }, [key, keyValue])
 
   useEffect(() => {
-    if (response?.data) setKeyStorage(key as string)
-  }, [response, key])
+    if (keyValue && !hasInvitationStorage()) execute()
+  }, [keyValue])
+
+  useEffect(() => {
+    if (response?.data) setInvitationStorage(response?.data)
+  }, [response])
+
+  const firstGuestIsMale = () =>
+    invitationValue?.guests?.[0]?.genre === GuestGenre.Male
 
   return (
     <>
@@ -166,7 +209,7 @@ export default function Home() {
             top: '-40px',
             width: '360px',
             height: '360px',
-            bgImage: 'url(/sunflower.png)',
+            bgImage: 'url(/sunflower-1.png)',
             bgSize: 'contain',
             animation: `${spin} infinite 45s ease-in-out`,
             zIndex: '0',
@@ -179,7 +222,7 @@ export default function Home() {
               width={200}
               height={200}
               alt="daniel y aiskel picture"
-              src="/da-cover.png"
+              src="/da-cover-1.png"
             />
           </Box>
 
@@ -190,10 +233,24 @@ export default function Home() {
           </Heading>
 
           <Text fontSize="1.25em" my="6" textAlign="center" px="4">
-            {response?.data ? (
+            {hasInvitationStorage() ? (
               <>
-                Queridos amigos <strong>{response.data.name}</strong>, deseamos
-                invitarlos a nuestra boda
+                {(invitationValue?.guests?.length ?? 0) > 1 ? (
+                  <>
+                    Queridos amigos <strong>{invitationValue?.name}</strong>,
+                    deseamos invitarlos a nuestra boda
+                  </>
+                ) : firstGuestIsMale() ? (
+                  <>
+                    Querido amigo <strong>{invitationValue?.name}</strong>,
+                    deseamos invitarte a nuestra boda
+                  </>
+                ) : (
+                  <>
+                    Querida amiga <strong>{invitationValue?.name}</strong>,
+                    deseamos invitarte a nuestra boda
+                  </>
+                )}
               </>
             ) : (
               <>
@@ -216,18 +273,95 @@ export default function Home() {
             <span>Higuerote - Vía Curiepe</span>
           </Text>
 
-          <Button
-            as={Link}
-            href={hasTokenStorage() ? '/confirm' : '/confirm/verify'}
-            rightIcon={<ArrowRightIcon fontSize="28px" />}
-            variant="outline"
-            size="lg"
-          >
-            Confirmar asistencia
-          </Button>
+          {(invitationValue?.guests?.length ?? 0) >= 1 && (
+            <Button
+              as={Link}
+              href={hasTokenStorage() ? '/confirm' : '/confirm/verify'}
+              rightIcon={<ArrowRightIcon fontSize="28px" />}
+              variant="outline"
+              size="lg"
+            >
+              Confirmar asistencia
+            </Button>
+          )}
 
           <Spacer></Spacer>
         </Stack>
+      </Stack>
+
+      <Stack direction="column" align="center">
+        <TextDivider width="140px" />
+        <Heading variant="light" size="xl" pt="12">
+          ¿Cómo llegar a la boda?
+        </Heading>
+        <Text
+          variant="regular"
+          fontSize="1.25em"
+          my="6"
+          pb="12"
+          textAlign="center"
+          px="4"
+        >
+          Te dejamos acá la ubicación exacta para que no te pierdas en el camino
+          ;)
+        </Text>
+        <Box sx={{ w: '100vw', h: '400px', maxW: '720px' }}>
+          {!isLoaded ? (
+            <h1>Loading...</h1>
+          ) : (
+            <GoogleMap
+              mapContainerClassName="map-container"
+              center={center}
+              zoom={13}
+            >
+              <Marker position={{ lat: 10.4736232, lng: -66.1575654 }} />
+            </GoogleMap>
+          )}
+        </Box>
+        <Box py="10">
+          <Button
+            as={Link}
+            href="https://goo.gl/maps/w21fLjnC91yLoA9u7"
+            target="_blank"
+            rightIcon={<PinIcon fontSize="20px" />}
+            variant="outline"
+            size="lg"
+          >
+            Ver en Google Maps
+          </Button>
+        </Box>
+      </Stack>
+
+      <Stack direction="column" align="center">
+        <TextDivider width="140px" />
+        <Heading variant="regular" size="xl" pt="12" px="6" textAlign="center">
+          ¿Tienes otras dudas sobre el evento?
+        </Heading>
+        <Text fontSize="1.25em" my="6" px="6" textAlign="center">
+          Visita nuestra sección de "Preguntas frecuentes" donde hemos preparado
+          la mayoría de respuestas a las dudas que te pueden llegarsurgir
+        </Text>
+        <Box pt="6" pb="10">
+          <Button
+            as={Link}
+            href="/faq"
+            rightIcon={<QuestionCircleIcon fontSize="20px" />}
+            variant="outline"
+            size="lg"
+          >
+            Ver preguntas frecuentes
+          </Button>
+        </Box>
+
+        <TextDivider width="140px" />
+
+        <Box py="12">
+          <Heading variant="light">
+            Daniel
+            <Heart color="#d5a700" />
+            Aiskel
+          </Heading>
+        </Box>
       </Stack>
     </>
   )

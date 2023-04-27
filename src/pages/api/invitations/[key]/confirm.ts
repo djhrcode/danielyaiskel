@@ -1,5 +1,4 @@
 import { Invitations } from '@/shared/data/invitations'
-import { guests, invitations, tickets } from '@/shared/data/tables'
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
 import { InvitationStatus } from '@/shared/domain/invitation_status'
@@ -37,7 +36,11 @@ export default async function handler(
     data: invitation,
     error,
     ...rest
-  } = await invitations.select(`id, name, guests (*)`).eq('key', key).single()
+  } = await client
+    .from('invitations')
+    .select(`id, name, guests (*)`)
+    .eq('key', key)
+    .single()
 
   if (error)
     return res.status(rest.status).json({
@@ -47,7 +50,8 @@ export default async function handler(
     })
 
   if (statusForAll && givenStatus === InvitationStatus.Accepted) {
-    const { data: ticket, error: ticketError } = await tickets
+    const { data: ticket, error: ticketError } = await client
+      .from('tickets')
       .insert({
         status: TicketStatus.Created,
         invitation_id: invitation.id,
@@ -63,9 +67,13 @@ export default async function handler(
         },
       })
 
-    await invitations.update({ status: givenStatus }).eq('id', invitation.id)
+    await client
+      .from('invitations')
+      .update({ status: givenStatus })
+      .eq('id', invitation.id)
 
-    const guestsResults = await guests
+    const guestsResults = await client
+      .from('guests')
       .update({ status: givenStatus, ticket_id: ticket.id })
       .eq('invitation_id', invitation.id)
       .select()
@@ -79,9 +87,13 @@ export default async function handler(
   }
 
   if (statusForAll) {
-    await invitations.update({ status: givenStatus }).eq('id', invitation.id)
+    await client
+      .from('invitations')
+      .update({ status: givenStatus })
+      .eq('id', invitation.id)
 
-    const guestsResults = await guests
+    const guestsResults = await client
+      .from('guests')
       .update({ status: givenStatus })
       .eq('invitation_id', invitation.id)
       .select()
@@ -149,7 +161,8 @@ export default async function handler(
     const guestsRejections = new Set(rejections)
     const invitationGuests = invitation.guests as Guest[]
 
-    await invitations
+    await client
+      .from('invitations')
       .update({ status: givenStatus, rejections })
       .eq('id', invitation.id)
 
@@ -167,7 +180,10 @@ export default async function handler(
           }
     ) as unknown as Mandatory<Guest, 'genre' | 'first_name' | 'last_name'>[]
 
-    const guestsResults = await guests.upsert(guestsData).select()
+    const guestsResults = await client
+      .from('guests')
+      .upsert(guestsData)
+      .select()
 
     if (guestsResults.error)
       return res.status(500).json({

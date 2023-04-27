@@ -1,0 +1,133 @@
+[
+  { "invitation": true, "name": "Flia. Segovia Romero" },
+  { "first_name": "Omar", "last_name": "Segovia", "genre": 1 },
+  { "first_name": "Moraima", "last_name": "Romero", "genre": 2 },
+  { "first_name": "Sofía", "last_name": "González", "genre": 2 },
+  { "first_name": "Ali", "last_name": "González", "genre": 1 },
+  { "first_name": "Omaris", "last_name": "Segovia", "genre": 2 },
+  { "first_name": "Carmen", "last_name": "Mata", "genre": 2 },
+  { "first_name": "Maximiliano", "last_name": "Romero", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Fuenmayor" },
+  { "first_name": "Enyor", "last_name": "Fuenmayor", "genre": 1 },
+  { "first_name": "Ela", "last_name": "De Fuenmayor", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Arias" },
+  { "first_name": "Nathan", "last_name": "Arias", "genre": 1 },
+  { "first_name": "Lerimar", "last_name": "De Arias", "genre": 2 },
+
+  { "invitation": true, "name": "Nathaniel Arias" },
+  { "first_name": "Nathaniel", "last_name": "Arias", "genre": 1 },
+
+  { "invitation": true, "name": "Maritza De Ornelas" },
+  { "first_name": "Maritza", "last_name": "De Ornelas", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Hernández" },
+  { "first_name": "Vilma", "last_name": "De Hernández", "genre": 2 },
+  { "first_name": "José", "last_name": "Hernández", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Hernández" },
+  { "first_name": "Eduardo", "last_name": "Hernández", "genre": 1 },
+  { "first_name": "Mariel", "last_name": "De Hernández", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Hernández" },
+  { "first_name": "Chiquinquirá", "last_name": "Hernández", "genre": 2 },
+  { "first_name": "Julio", "last_name": "Hernández", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Sosaya" },
+  { "first_name": "César", "last_name": "Sosaya", "genre": 1 },
+  { "first_name": "Thais", "last_name": "De Sosaya", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Rada" },
+  { "first_name": "Briseis", "last_name": "De Rada", "genre": 2 },
+  { "first_name": "Jimena", "last_name": "Rada", "genre": 2 },
+  { "first_name": "Carlos", "last_name": "Rada", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Blanco" },
+  { "first_name": "Eber", "last_name": "Blanco", "genre": 1 },
+  { "first_name": "Julieth", "last_name": "De Blanco", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Segura" },
+  { "first_name": "Carlos J.", "last_name": "Segura", "genre": 1 },
+  { "first_name": "Cheslyn", "last_name": "De Segura", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Zanetti" },
+  { "first_name": "Francisco", "last_name": "Zanetti", "genre": 1 },
+  { "first_name": "Mariana", "last_name": "De Zanetti", "genre": 2 },
+  { "first_name": "Luisa E.", "last_name": "Zanetti", "genre": 2 },
+  { "first_name": "Mariela", "last_name": "De Zanetti", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Machado Segovia" },
+  { "first_name": "Yatsiby", "last_name": "Segovia", "genre": 2 },
+  { "first_name": "José M.", "last_name": "Machado", "genre": 1 },
+  { "first_name": "Miguel A.", "last_name": "Machado", "genre": 1 },
+  { "first_name": "José A.", "last_name": "Machado", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Brito Segovia" },
+  { "first_name": "Gabriela", "last_name": "Segovia", "genre": 2 },
+  { "first_name": "Manuel", "last_name": "Brito", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Moreno" },
+  { "first_name": "Teresa", "last_name": "De Moreno", "genre": 2 },
+  { "first_name": "Orlando", "last_name": "Moreno", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Alayon" },
+  { "first_name": "Rafael", "last_name": "Alayon", "genre": 1 },
+  { "first_name": "Amaris", "last_name": "De Alayon", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Olivo" },
+  { "first_name": "Alberto", "last_name": "Olivo", "genre": 1 },
+  { "first_name": "Raelis", "last_name": "De Olivo", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Baptista" },
+  { "first_name": "Josmari", "last_name": "Baptista", "genre": 2 },
+  { "first_name": "José", "last_name": "Baptista", "genre": 1 },
+  { "first_name": "María", "last_name": "Baptista", "genre": 2 },
+  { "first_name": "Jenia", "last_name": "Baptista", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Hernández" },
+  { "first_name": "Génesis", "last_name": "De Hernández", "genre": 2 },
+  { "first_name": "Gilbert", "last_name": "Hernández", "genre": 1 },
+
+  { "invitation": true, "name": "Isamar Rincón" },
+  { "first_name": "Isamar", "last_name": "Rincón", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Vargas" },
+  { "first_name": "Yainin", "last_name": "Vargas", "genre": 2 },
+  { "first_name": "Yanina", "last_name": "Vargas", "genre": 2 },
+  { "first_name": "César", "last_name": "Vargas", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Rivas" },
+  { "first_name": "Nery", "last_name": "De Rivas", "genre": 2 },
+  { "first_name": "Pablo", "last_name": "Rivas", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Pérez" },
+  { "first_name": "Álvaro", "last_name": "Pérez", "genre": 1 },
+  { "first_name": "Anabella", "last_name": "De Pérez", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Barragán" },
+  { "first_name": "Gabriela", "last_name": "De Barragán", "genre": 2 },
+  { "first_name": "Narella", "last_name": "Barragán", "genre": 2 },
+  { "first_name": "Jorge", "last_name": "Barragán", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Carrasco" },
+  { "first_name": "Elizabeth", "last_name": "De Carrasco", "genre": 2 },
+  { "first_name": "Camila", "last_name": "Carrasco", "genre": 2 },
+  { "first_name": "Carlos", "last_name": "Carrasco", "genre": 1 },
+
+  { "invitation": true, "name": "Flor García" },
+  { "first_name": "Flor", "last_name": "García", "genre": 2 },
+
+  { "invitation": true, "name": "Ruth Frailán" },
+  { "first_name": "Ruth", "last_name": "Frailán", "genre": 2 },
+
+  { "invitation": true, "name": "Flia. Santaella" },
+  { "first_name": "Marlon", "last_name": "Santaella", "genre": 1 },
+  { "first_name": "Marielis", "last_name": "De Santaella", "genre": 2 },
+  { "first_name": "Moisés", "last_name": "Santaella", "genre": 1 },
+
+  { "invitation": true, "name": "Flia. Pernía" },
+  { "first_name": "Janeth", "last_name": "De Pernía", "genre": 2 },
+  { "first_name": "Gerson", "last_name": "Pernía", "genre": 1 },
+  { "first_name": "Janijer", "last_name": "Pernía", "genre": 2 }
+]

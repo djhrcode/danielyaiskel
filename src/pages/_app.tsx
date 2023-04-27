@@ -7,7 +7,7 @@ import { Navigation } from '@/shared/ui/navigation'
 function App({ Component, pageProps }: AppProps) {
   return (
     <Providers>
-      <main className={fraunces.className}>
+      <main>
         <Navigation />
         <Component {...pageProps} />
       </main>
