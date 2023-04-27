@@ -9,13 +9,16 @@ import { Guest } from '@/shared/domain/guest'
 import { mkdir, mkdirSync, writeFileSync } from 'fs'
 import path from 'path'
 
+type GuestData = {
+  first_name?: string
+  last_name?: string
+  genre?: GuestGenre
+  invitation?: false
+  status?: InvitationStatus
+}
+
 type InvitationData = Array<
-  | {
-      first_name?: string
-      last_name?: string
-      genre?: GuestGenre
-      invitation?: false
-    }
+  | GuestData
   | {
       name?: string
       invitation?: true
@@ -59,7 +62,7 @@ const tranformToDomain = (data: InvitationData) => {
   const group: { current: null | symbol } = { current: null }
 
   data.forEach((item) => {
-    if (item.invitation) {
+    if (item.invitation === true) {
       group.current = null
 
       const { name } = item
@@ -82,12 +85,15 @@ const tranformToDomain = (data: InvitationData) => {
 
     const { guests } = invitation
 
-    const guest: Guest = {
-      ...item,
+    const guest: GuestData = {
+      ...(item as GuestData),
       status: InvitationStatus.Pending,
     }
 
-    registry.set(group.current, { ...invitation, guests: [...guests, guest] })
+    registry.set(group.current, {
+      ...invitation,
+      guests: [...guests, guest as Guest],
+    })
 
     total++
     guest.genre === GuestGenre.Male ? men++ : women++
