@@ -192,6 +192,8 @@ export default function Home() {
     if (response?.data) setInvitationStorage(response?.data)
   }, [response])
 
+  const hasSingleGuest = () => invitationValue?.guests?.length === 1
+
   const firstGuestIsMale = () =>
     invitationValue?.guests?.[0]?.genre === GuestGenre.Male
 
@@ -339,7 +341,7 @@ export default function Home() {
         </Heading>
         <Text fontSize="1.25em" my="6" px="6" textAlign="center">
           Visita nuestra sección de "Preguntas frecuentes" donde hemos preparado
-          la mayoría de respuestas a las dudas que te pueden llegarsurgir
+          la mayoría de respuestas a las dudas que te pueden llegar surgir
         </Text>
         <Box pt="6" pb="10">
           <Button

@@ -2,6 +2,7 @@ import { Invitations } from '@/shared/data/invitations'
 import { invitations } from '@/shared/data/tables'
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken'
+import { client } from '@/shared/data/client'
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +15,8 @@ export default async function handler(
   if (method !== 'POST')
     return res.status(404).json({ error: 'Method not allowed' })
 
-  const results = await invitations
+  const results = await client
+    .from('invitations')
     .select(
       `id, name, status, tickets (id, status), guests (id, first_name, last_name, genre, status)`
     )

@@ -161,7 +161,7 @@ export default function Home() {
       ],
       [
         ...guests
-          .filter(({ status }) => status === InvitationStatus.Rejected)
+          .filter(({ status }) => status !== InvitationStatus.Accepted)
           .map(toId),
       ],
     ]
@@ -234,20 +234,28 @@ export default function Home() {
     return navigateTo({ pathname: '/status/rejected' })
   }
 
+  const hasSingleGuest = () => invitation?.guests?.length === 1
+
   return (
     <>
       <Stack direction="column" align="center" spacing="4" py="6">
         <Heading variant="regular" size="xl" textAlign="center">
-          ¿Nos acompañan?
+          {hasSingleGuest() ? '¿Nos acompañas?' : '¿Nos acompañan?'}
         </Heading>
 
-        {invitation && (
-          <Text as="div" fontSize="1.25em" my="6" textAlign="center" px="4">
-            Tienes {invitation?.guests?.length ?? 0} invitados. Por favor,
-            indícanos si todos los invitados que hemos incluido asistirán a la
-            boda
-          </Text>
-        )}
+        {invitation &&
+          (hasSingleGuest() ? (
+            <Text as="div" fontSize="1.25em" my="6" textAlign="center" px="4">
+              Por favor, indícanos si puedes asistir y acompañarnos en este día
+              tan especial
+            </Text>
+          ) : (
+            <Text as="div" fontSize="1.25em" my="6" textAlign="center" px="4">
+              Tienes {invitation?.guests?.length ?? 0} invitados. Por favor,
+              indícanos si todos los invitados que hemos incluido asistirán a la
+              boda
+            </Text>
+          ))}
 
         {invitation && (
           <List>
@@ -257,7 +265,6 @@ export default function Home() {
                   key={guestId}
                   checked={status === InvitationStatus.Accepted}
                   onChange={(isAttending) => {
-                    console.log('isAttending', guestId, isAttending)
                     setInvitationStorage({
                       ...invitation,
                       guests: invitation.guests.map((guest) => {
@@ -303,10 +310,14 @@ export default function Home() {
             )
           }
         >
-          {selectable ? 'Confirmar seleccionados' : 'Si, confirmar a todos'}
+          {selectable
+            ? 'Confirmar seleccionados'
+            : hasSingleGuest()
+            ? 'Si, confirmar asistencia'
+            : 'Si, confirmar a todos'}
         </Button>
 
-        {!selectable && (
+        {!selectable && !hasSingleGuest() && (
           <Button
             as={Link}
             href={`/confirm?select=true`}
@@ -326,7 +337,7 @@ export default function Home() {
             variant="link"
             onClick={onOpen}
           >
-            No podemos asistir
+            {hasSingleGuest() ? 'No podré asistir' : 'No podemos asistir'}
           </Button>
         )}
 
@@ -357,8 +368,9 @@ export default function Home() {
           <AlertDialogHeader>¿Seguro deseas continuar?</AlertDialogHeader>
           <AlertDialogCloseButton />
           <AlertDialogBody fontSize="16px">
-            Si continúas se rechazará la invitación para todas las personas que
-            están en esta lista
+            {hasSingleGuest()
+              ? 'Si continúas se rechazará tu invitación y no podrás revertir esta acción'
+              : 'Si continúas se rechazará la invitación para todas las personas que están en esta lista'}
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={dialogRef} onClick={onClose}>
