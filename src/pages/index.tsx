@@ -140,8 +140,9 @@ export default function Home() {
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY || '',
   })
 
+  //10.471431,-66.151268
   //10.4767208,-66.1750094,13.97z
-  const center = useMemo(() => ({ lat: 10.4736232, lng: -66.1575654 }), [])
+  const center = useMemo(() => ({ lat: 10.471431, lng: -66.151268 }), [])
   const customMarker = {
     path: 'M29.395,0H17.636c-3.117,0-5.643,3.467-5.643,6.584v34.804c0,3.116,2.526,5.644,5.643,5.644h11.759   c3.116,0,5.644-2.527,5.644-5.644V6.584C35.037,3.467,32.511,0,29.395,0z M34.05,14.188v11.665l-2.729,0.351v-4.806L34.05,14.188z    M32.618,10.773c-1.016,3.9-2.219,8.51-2.219,8.51H16.631l-2.222-8.51C14.41,10.773,23.293,7.755,32.618,10.773z M15.741,21.713   v4.492l-2.73-0.349V14.502L15.741,21.713z M13.011,37.938V27.579l2.73,0.343v8.196L13.011,37.938z M14.568,40.882l2.218-3.336   h13.771l2.219,3.336H14.568z M31.321,35.805v-7.872l2.729-0.355v10.048L31.321,35.805',
     fillColor: 'red',
@@ -308,17 +309,14 @@ export default function Home() {
           ;)
         </Text>
         <Box sx={{ w: '100vw', h: '400px', maxW: '720px' }}>
-          {!isLoaded ? (
-            <h1>Loading...</h1>
-          ) : (
-            <GoogleMap
-              mapContainerClassName="map-container"
-              center={center}
-              zoom={13}
-            >
-              <Marker position={{ lat: 10.4736232, lng: -66.1575654 }} />
-            </GoogleMap>
-          )}
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d38345.28196165913!2d-66.15027825790585!3d10.472465225697515!3m2!1i1424!2i768!4f13.1!3m3!1m2!1s0x8c2b9f6fa75740c9%3A0xf1a7602a296e0530!2sHotel%20Alejandr%C3%ADa!5e0!3m2!1ses!2sco!4v1682578132860!5m2!1ses!2sco"
+            width="100%"
+            height="400"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </Box>
         <Box py="10">
           <Button
