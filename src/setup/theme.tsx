@@ -5,7 +5,6 @@ import {
   defineStyleConfig,
   extendTheme,
 } from '@chakra-ui/react'
-import { fraunces } from './fonts'
 import Link from 'next/link'
 
 const theme = extendTheme({
@@ -13,15 +12,19 @@ const theme = extendTheme({
     global: () => ({
       body: {
         bg: '#FBF4ED',
-        color: '#443307',
+        color: '#7C4E00',
         fontSize: '14px',
+        backgroundImage: 'url(/background.jpg)',
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
       },
     }),
   },
 
   colors: {
     brand: {
-      default: '#443307',
+      default: '#7C4E00',
       100: '#FBF4ED',
       200: '#dcd2bf',
       300: '#b5ac8f',
@@ -32,8 +35,8 @@ const theme = extendTheme({
   },
 
   fonts: {
-    body: 'Fraunces, serif',
-    heading: 'Fraunces, serif',
+    body: 'Archivo, serif',
+    heading: 'Carattere, serif',
   },
 
   components: {
@@ -98,23 +101,24 @@ const theme = extendTheme({
 
     Button: defineStyleConfig({
       baseStyle: {
-        fontFamily: 'Fraunces',
-        borderRadius: '0',
+        fontFamily: 'Archivo',
+        borderRadius: '15px',
       },
 
       variants: {
         outline: {
-          bg: 'white',
+          bg: '#ffffff4f',
+          backdropFilter: 'blur(60px)',
           borderColor: '#443307',
           borderWidth: '2px',
           fontWeight: '700',
           _hover: {
-            bg: '#FBF4ED',
-            borderColor: '#9e8866',
+            bg: '#ffedf1',
+            borderColor: '#443307',
           },
           _focus: {
-            bg: '#ffea9e',
-            borderColor: '#9e8866',
+            bg: '#ffd7e1',
+            borderColor: '#2C1C01',
           },
         },
         solid: {
@@ -122,12 +126,24 @@ const theme = extendTheme({
           color: '#443307',
           fontWeight: '700',
           _hover: {
-            bg: '#FBF4ED',
-            borderColor: '#9e8866',
+            bg: '#ffeef2',
+            borderColor: '#443307',
           },
           _focus: {
-            bg: '#ffea9e',
-            borderColor: '#9e8866',
+            bg: '#ffbdce',
+            borderColor: '#443307',
+          },
+        },
+        primary: {
+          bg: '#FCAEC2',
+          color: '#2C1C01',
+          fontWeight: '700',
+          _hover: {
+            bg: '#ffbdce',
+          },
+          _focus: {
+            bg: '#FCAEC2',
+            borderColor: '#ee86a0',
           },
         },
       },

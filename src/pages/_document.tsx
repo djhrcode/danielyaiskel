@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
@@ -6,9 +6,16 @@ export default function Document() {
       <Head>
         <link
           rel="preload"
-          href="/fraunces.woff2"
+          href="/archivo.ttf"
           as="font"
-          type="font/woff2"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/carattere.ttf"
+          as="font"
+          type="font/ttf"
           crossOrigin="anonymous"
         />
       </Head>
@@ -17,5 +24,5 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }

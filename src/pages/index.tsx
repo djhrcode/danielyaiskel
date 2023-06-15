@@ -43,7 +43,6 @@ const Heart = styled(HeartIcon)({
 const TextDivider = styled(Divider)({
   borderColor: '#443307',
   borderWidth: '1px',
-  borderStyle: 'dashed',
 })
 
 function padZero(num: number): string {
@@ -203,78 +202,39 @@ export default function Home() {
       <Stack
         direction="column"
         align="center"
-        minHeight="calc(100vh - 120px)"
+        minHeight="calc(100vh - 240px)"
         sx={{
           overflow: 'hidden',
-          _after: {
-            content: '""',
-            position: 'relative',
-            top: '-40px',
-            width: '360px',
-            height: '360px',
-            bgImage: 'url(/sunflower-1.png)',
-            bgSize: 'contain',
-            animation: `${spin} infinite 45s ease-in-out`,
-            zIndex: '0',
-          },
         }}
       >
         <Stack zIndex="10" direction="column" align="center" spacing="4">
           <Box position="absolute" mt="-12">
             <Image
-              width={200}
-              height={200}
-              alt="daniel y aiskel picture"
-              src="/da-cover-1.png"
+              width={350}
+              height={350}
+              alt="ivanna figueroa picture"
+              src="/ivanna-picture.png"
             />
           </Box>
 
-          <Box height="150px"></Box>
+          <Box height="200px"></Box>
 
-          <Heading variant="light" size="2xl">
-            Daniel <Heart>♥</Heart> Aiskel
+          <Heading variant="light" size="3xl">
+            Ivanna Figueroa
           </Heading>
 
           <Text fontSize="1.25em" my="6" textAlign="center" px="4">
-            {hasInvitationStorage() ? (
-              <>
-                {(invitationValue?.guests?.length ?? 0) > 1 ? (
-                  <>
-                    Queridos amigos <strong>{invitationValue?.name}</strong>,
-                    deseamos invitarlos a nuestra boda
-                  </>
-                ) : firstGuestIsMale() ? (
-                  <>
-                    Querido amigo <strong>{invitationValue?.name}</strong>,
-                    deseamos invitarte a nuestra boda
-                  </>
-                ) : (
-                  <>
-                    Querida amiga <strong>{invitationValue?.name}</strong>,
-                    deseamos invitarte a nuestra boda
-                  </>
-                )}
-              </>
-            ) : (
-              <>
-                ¡Nos casamos! Y deseamos que nos acompañes en este momento tan
-                especial
-              </>
-            )}
+            <strong>¡Me gradué!</strong> Acompáñame a celebrarlo en mi{' '}
+            <strong>fiesta de graduación.</strong>
           </Text>
 
           <TextDivider width="140px" />
 
-          <Heading mt="2" mb="3" size="lg">
-            SÁB | 13 / MAY / 23
+          <Heading mt="2" mb="3" size="lg" fontFamily="Archivo">
+            SÁB | 24 / JUN / 2023 - 4 PM
           </Heading>
 
           <TextDivider width="140px" />
-
-          <Text fontSize="1.25em" my="6" textAlign="center">
-            <span>10:30 AM - Hotel Castillo Alejandría </span> <br />
-            <span>Higuerote - Vía Curiepe</span>
-          </Text>
 
           {(invitationValue?.guests?.length ?? 0) >= 1 && (
             <Button
@@ -288,6 +248,34 @@ export default function Home() {
             </Button>
           )}
 
+          <Text fontSize="1.25em" my="6" textAlign="center">
+            ¿Cómo llegar a la fiesta?
+          </Text>
+          <Button
+            as={Link}
+            href="https://goo.gl/maps/w21fLjnC91yLoA9u7"
+            target="_blank"
+            rightIcon={<PinIcon fontSize="20px" />}
+            variant="outline"
+            size="lg"
+          >
+            Ver en Google Maps
+          </Button>
+
+          <Text fontSize="1.25em" my="6" textAlign="center">
+            ¿Tienes otras dudas sobre la fiesta?{' '}
+          </Text>
+          <Button
+            as={Link}
+            href="https://goo.gl/maps/w21fLjnC91yLoA9u7"
+            target="_blank"
+            rightIcon={<PinIcon fontSize="20px" />}
+            variant="primary"
+            size="lg"
+          >
+            Ver en Google Maps
+          </Button>
+
           <Spacer></Spacer>
         </Stack>
       </Stack>
@@ -295,7 +283,7 @@ export default function Home() {
       <Stack direction="column" align="center">
         <TextDivider width="140px" />
         <Heading variant="light" size="xl" pt="12">
-          ¿Cómo llegar a la boda?
+          ¿Cómo llegar al evento?
         </Heading>
         <Text
           variant="regular"
@@ -310,7 +298,7 @@ export default function Home() {
         </Text>
         <Box sx={{ w: '100vw', h: '400px', maxW: '720px' }}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d38345.28196165913!2d-66.15027825790585!3d10.472465225697515!3m2!1i1424!2i768!4f13.1!3m3!1m2!1s0x8c2b9f6fa75740c9%3A0xf1a7602a296e0530!2sHotel%20Alejandr%C3%ADa!5e0!3m2!1ses!2sco!4v1682578132860!5m2!1ses!2sco"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d753.2048082553358!2d-75.96810113038399!3d40.96353871091429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c5a43e6f6e8981%3A0x6cf608c03e4f4a38!2s225%20E%204th%20St%2C%20Hazleton%2C%20PA%2018201%2C%20EE.%20UU.!5e0!3m2!1ses!2sco!4v1686812685028!5m2!1ses!2sco"
             width="100%"
             height="400"
             allowFullScreen
@@ -356,11 +344,7 @@ export default function Home() {
         <TextDivider width="140px" />
 
         <Box py="12">
-          <Heading variant="light">
-            Daniel
-            <Heart color="#d5a700" />
-            Aiskel
-          </Heading>
+          <Heading variant="light">Ivanna Figueroa</Heading>
         </Box>
       </Stack>
     </>

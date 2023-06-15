@@ -198,82 +198,6 @@ export default function Home() {
             <h2>
               <AccordionButton fontSize="lg" py="4" fontWeight={600}>
                 <Box as="span" flex="1" textAlign="left">
-                  ¿Como estará organizado el banquete?
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} fontSize="md">
-              Después del discurso, se realizará un banquete donde se servirá un
-              almuerzo{' '}
-              <strong>
-                (si tienes algún tipo de alergias a la comida de mar, por favor
-                notifícanos)
-              </strong>{' '}
-              y posteriormente se realizarán algunas actividades y habrá música
-              para bailar.
-              <br />
-              <br />
-              También habrá un espacio para quienes deseen dirigir algunas
-              palabras a los novios. Los testigos de Jehová{' '}
-              <strong>
-                no realizamos ningún tipo de actividad supersticiosa ni
-                participamos en costumbres que impliquen invocar la buena suerte
-              </strong>{' '}
-              <br />
-              <br />
-              Para más información de como son las bodas de los testigos de
-              Jehová visite la siguiente url:{' '}
-              <Link
-                color="blue.500"
-                target="_blank"
-                href="https://www.jw.org/es/testigos-de-jehová/preguntas-frecuentes/bodas-testigos-de-jehova/"
-              >
-                https://www.jw.org/es/testigos-de-jehová/preguntas-frecuentes/bodas-testigos-de-jehova/
-              </Link>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <h2>
-              <AccordionButton fontSize="lg" py="4" fontWeight={600}>
-                <Box as="span" flex="1" textAlign="left">
-                  ¿Cómo son las bodas de los testigos de Jehová?
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} fontSize="md">
-              La boda iniciará con una ceremonia sencilla, donde se pronunciará
-              un discurso breve basado en la Biblia, que ofrecerá consejos
-              prácticos a la pareja para la vida de casados.
-              <br />
-              <br />
-              Tanto al inicio como al final del discurso se entona una canción y
-              se hace una oración en la que se pide la bendición para la pareja.
-              <br />
-              <br />
-              <strong>
-                No realizamos brindis, ni se tira arroz o confeti a la pareja.
-              </strong>{' '}
-              Aunque habrá disponible bebidas alcohólicas, se servirán con
-              moderación y no se permitirá ningún tipo de exceso
-              <br />
-              <br />
-              Para más información de como son las bodas de los testigos de
-              Jehová visite la siguiente url:{' '}
-              <Link
-                color="blue.500"
-                target="_blank"
-                href="https://www.jw.org/es/testigos-de-jehová/preguntas-frecuentes/bodas-testigos-de-jehova/"
-              >
-                https://www.jw.org/es/testigos-de-jehová/preguntas-frecuentes/bodas-testigos-de-jehova/
-              </Link>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <h2>
-              <AccordionButton fontSize="lg" py="4" fontWeight={600}>
-                <Box as="span" flex="1" textAlign="left">
                   Si yo no puedo asistir, ¿le puedo ceder mi invitación a otra
                   persona?
                 </Box>
@@ -316,47 +240,6 @@ export default function Home() {
               <strong>Si solo algunos de los invitados podrá asistir</strong>,
               al ingresar al enlace debes dar click en la opción "Modificar
               asistencia" y seleccionar quienes podrán asistir
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <h2>
-              <AccordionButton fontSize="lg" py="4" fontWeight={600}>
-                <Box as="span" flex="1" textAlign="left">
-                  Deseo darles un obsequio, ¿qué puedo regalarles?
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} fontSize="md">
-              Te agradecemos enormemente que deseas apoyarnos de esta forma.
-              <br />
-              <br />
-              Cualquier obsequio que salga de tu corazón y esté en tus
-              posibilidades hacerlo lo aceptaremos con gusto, sin embargo, toma
-              en cuenta que puesto que{' '}
-              <strong>no viviremos en Venezuela</strong>, probablemente no
-              podamos quedarnos ni llevarnos cosas grandes o muy pesadas.
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <h2>
-              <AccordionButton fontSize="lg" py="4" fontWeight={600}>
-                <Box as="span" flex="1" textAlign="left">
-                  ¿Que pasa si no puedo llevar regalos?
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4} fontSize="md">
-              Nuestra principal motivación es que las personas más cercanas e
-              importantes para nosotros estén presentes en este día tan
-              especial.
-              <br />
-              <br />
-              Sin embargo, sabemos que la situación económica de muchos de
-              nuestros invitados no es la más favorable, por ello no rechaces la
-              invitación si no puedes darnos un presente ni te sientas en la
-              obligación de obsequiarnos algo.
             </AccordionPanel>
           </AccordionItem>
         </Accordion>

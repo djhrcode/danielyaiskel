@@ -19,17 +19,21 @@ import {
 import { ArrowForwardIcon, HamburgerIcon } from '@chakra-ui/icons'
 import styled from '@emotion/styled'
 import { Drawer } from '@chakra-ui/react'
-import { ArrowRightIcon, CloseIcon, HeartIcon } from '@/shared/ui/icons'
+import {
+  ArrowRightIcon,
+  CloseIcon,
+  GraduationIcon,
+  HeartIcon,
+} from '@/shared/ui/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
 
-const Heart = styled(HeartIcon)({
-  fontSize: '0.5em',
+const NavHeadingIcon = styled(GraduationIcon)({
+  fontSize: '0.8em',
   marginRight: '0.1em',
   marginLeft: '0.2em',
-  color: '#ffc800',
 })
 
 const NavHeading = styled(Heading)({
@@ -77,8 +81,8 @@ export function Navigation() {
 
   return (
     <NavBox zIndex="modal">
-      <NavHeading>
-        D<Heart>♥</Heart>A
+      <NavHeading fontFamily="Archivo">
+        I <NavHeadingIcon /> F
       </NavHeading>
 
       <Box>
@@ -111,11 +115,7 @@ export function Navigation() {
               ></IconButton>
               <Spacer />
               <NavHeading>
-                <Heading variant="light">
-                  Daniel
-                  <Heart />
-                  Aiskel
-                </Heading>
+                <Heading variant="light">Ivanna Figueroa</Heading>
               </NavHeading>
               <Spacer />
               <IconButton
