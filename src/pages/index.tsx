@@ -280,7 +280,7 @@ export default function Home() {
         <Box py="10">
           <Button
             as={Link}
-            href="https://goo.gl/maps/w21fLjnC91yLoA9u7"
+            href="https://goo.gl/maps/hBadFDaQWSarW5FM9"
             target="_blank"
             rightIcon={<PinIcon fontSize="20px" />}
             variant="outline"
