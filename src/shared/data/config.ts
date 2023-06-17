@@ -14,3 +14,5 @@ if (typeof config.url !== 'string')
 
 if (typeof config.token !== 'string')
   throw new Error('Undexpected [config.token] value. Got: ' + config.token)
+
+console.log('config', isServer, config)

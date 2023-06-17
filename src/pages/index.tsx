@@ -247,35 +247,6 @@ export default function Home() {
               Confirmar asistencia
             </Button>
           )}
-
-          <Text fontSize="1.25em" my="6" textAlign="center">
-            ¿Cómo llegar a la fiesta?
-          </Text>
-          <Button
-            as={Link}
-            href="https://goo.gl/maps/w21fLjnC91yLoA9u7"
-            target="_blank"
-            rightIcon={<PinIcon fontSize="20px" />}
-            variant="outline"
-            size="lg"
-          >
-            Ver en Google Maps
-          </Button>
-
-          <Text fontSize="1.25em" my="6" textAlign="center">
-            ¿Tienes otras dudas sobre la fiesta?{' '}
-          </Text>
-          <Button
-            as={Link}
-            href="https://goo.gl/maps/w21fLjnC91yLoA9u7"
-            target="_blank"
-            rightIcon={<PinIcon fontSize="20px" />}
-            variant="primary"
-            size="lg"
-          >
-            Ver en Google Maps
-          </Button>
-
           <Spacer></Spacer>
         </Stack>
       </Stack>

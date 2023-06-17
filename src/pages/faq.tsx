@@ -183,9 +183,9 @@ export default function Home() {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4} fontSize="md">
-              En vista de la ocasión, esperamos que la vestimenta sea formal.
-              Sin embargo no tiene porque ser algo demasiado costoso o
-              llamativo, sino modesto y sencillo.
+              En vista de la ocasión, esperamos que la vestimenta sea
+              semi-formal. Sin embargo no tiene porque ser algo demasiado
+              costoso o llamativo, sino modesto y sencillo.
               <br />
               <br />
               Aunque no hay normas específicas, esperamos que nadie use{' '}
